@@ -1,0 +1,35 @@
+// Write a program that performs the following operations on an array
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    vector<int> arr(n);
+    
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    // Reverse the array
+    reverse(arr.begin(), arr.end());
+    cout << "Reversed array: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+    
+    // Find second smallest and second largest
+    sort(arr.begin(), arr.end());
+    int secondSmallest = arr[1];
+    int secondLargest = arr[n - 2];
+    
+    cout << "Second smallest element: " << secondSmallest << endl;
+    cout << "Second largest element: " << secondLargest << endl;
+    
+    return 0;
+}
