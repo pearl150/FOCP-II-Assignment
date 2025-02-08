@@ -1,0 +1,50 @@
+#include <iostream>
+#include <algorithm>
+#include <cctype>
+#include <unordered_map>
+using namespace std;
+// Function to check if a string is a palindrome
+bool isPalindrome(const string &s) {
+    string filtered = "";
+    for (char c : s) {
+        if (!isspace(c)) filtered += tolower(c);
+    }
+    string rev = filtered;
+    reverse(rev.begin(), rev.end());
+    return filtered == rev;
+}
+// Function to count frequency of characters
+void countFrequency(const string &s) {
+    unordered_map<char, int> freq;
+    for (char c : s) {
+        if (!isspace(c)) freq[tolower(c)]++;
+    }
+    cout << "Character frequencies:" << endl;
+    for (auto &p : freq) {
+        cout << p.first << ": " << p.second << endl;
+    }
+}
+// Function to replace vowels with '*'
+void replaceVowels(string &s) {
+    string vowels = "aeiouAEIOU";
+    for (char &c : s) {
+        if (vowels.find(c) != string::npos) c = '*';
+    }
+}
+
+int main() {
+    string input;
+    cout << "Enter a string: ";
+    getline(cin, input);
+    
+   if (isPalindrome(input)) {
+        cout << "The string is a palindrome." << endl;
+    } else {
+        cout << "The string is not a palindrome." << endl;
+    }
+      countFrequency(input);
+     replaceVowels(input);
+    cout << "String after replacing vowels: " << input << endl;
+    
+    return 0;
+}
